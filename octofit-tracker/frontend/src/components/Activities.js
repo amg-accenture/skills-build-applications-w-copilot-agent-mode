@@ -8,15 +8,12 @@ const Activities = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
-        // In codespace environment, always use codespace URL
-        const baseUrl = codespaceName
-          ? `https://${codespaceName}-8000.app.github.dev`
-          : 'http://localhost:8000';
-        const apiUrl = `${baseUrl}/api/activities/`;
+const apiUrl =
+    "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev/api/activities/";
+
 
         console.log('Fetching activities from:', apiUrl);
-        console.log('Using codespace URL:', !!codespaceName);
+        
 
         let response = await fetch(apiUrl);
         if (!response.ok) {

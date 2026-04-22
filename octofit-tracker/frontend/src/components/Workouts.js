@@ -8,24 +8,17 @@ const Workouts = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
-        // In codespace environment, always use codespace URL
-        const baseUrl = codespaceName
-          ? `https://${codespaceName}-8000.app.github.dev`
-          : 'http://localhost:8000';
-        const apiUrl = `${baseUrl}/api/workouts/`;
+const apiUrl =
+    "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev/api/workouts/";
+    
 
         console.log('Fetching workouts from:', apiUrl);
-        console.log('Using codespace URL:', !!codespaceName);
+     
 
         let response = await fetch(apiUrl);
         if (!response.ok) {
           // If codespace URL fails, try localhost as fallback
-          if (codespaceName) {
-            const localhostUrl = 'http://localhost:8000/api/workouts/';
-            console.log('Codespace URL failed, trying localhost URL:', localhostUrl);
-            response = await fetch(localhostUrl);
-          }
+
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
