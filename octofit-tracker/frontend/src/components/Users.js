@@ -8,19 +8,19 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-const apiUrl = "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev/api/users/";
+
 
         console.log('Fetching users from:', apiUrl);
-        console.log('Using codespace URL:', !!codespaceName);
+       // console.log('Using codespace URL:', !!codespaceName);
 
         let response = await fetch(apiUrl);
         if (!response.ok) {
           // If codespace URL fails, try localhost as fallback
-          if (codespaceName) {
-            const localhostUrl = 'http://localhost:8000/api/users/';
-            console.log('Codespace URL failed, trying localhost URL:', localhostUrl);
-            response = await fetch(localhostUrl);
-          }
+         // if (codespaceName) {
+         //   const localhostUrl = 'http://localhost:8000/api/users/';
+         //   console.log('Codespace URL failed, trying localhost URL:', localhostUrl);
+         //   response = await fetch(localhostUrl);
+         // }
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
