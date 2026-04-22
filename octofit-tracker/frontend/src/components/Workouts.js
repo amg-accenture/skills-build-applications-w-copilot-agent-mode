@@ -9,16 +9,26 @@ const Workouts = () => {
     const fetchWorkouts = async () => {
       try {
         const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
+        // In codespace environment, always use codespace URL
         const baseUrl = codespaceName
           ? `https://${codespaceName}-8000.app.github.dev`
           : 'http://localhost:8000';
         const apiUrl = `${baseUrl}/api/workouts/`;
 
         console.log('Fetching workouts from:', apiUrl);
+        console.log('Using codespace URL:', !!codespaceName);
 
-        const response = await fetch(apiUrl);
+        let response = await fetch(apiUrl);
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          // If codespace URL fails, try localhost as fallback
+          if (codespaceName) {
+            const localhostUrl = 'http://localhost:8000/api/workouts/';
+            console.log('Codespace URL failed, trying localhost URL:', localhostUrl);
+            response = await fetch(localhostUrl);
+          }
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
         }
         const data = await response.json();
 
