@@ -13,16 +13,12 @@ const Teams = () => {
         
 
         console.log('Fetching teams from:', apiUrl);
-        console.log('Using codespace URL:', !!codespaceName);
+      
 
         let response = await fetch(apiUrl);
         if (!response.ok) {
           // If codespace URL fails, try localhost as fallback
-          if (codespaceName) {
-            const localhostUrl = 'http://localhost:8000/api/teams/';
-            console.log('Codespace URL failed, trying localhost URL:', localhostUrl);
-            response = await fetch(localhostUrl);
-          }
+
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
