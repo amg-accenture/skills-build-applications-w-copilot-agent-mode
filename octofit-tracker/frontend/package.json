@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev",
+  //"proxy": "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@testing-library/dom": "^10.4.1",
