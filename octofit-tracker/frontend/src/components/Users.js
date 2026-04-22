@@ -9,7 +9,8 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
 
-
+ const apiUrl =
+    "https://animated-space-sniffle-774vv9g6vwwfxxxq-8000.app.github.dev/api/users/";
         console.log('Fetching users from:', apiUrl);
        // console.log('Using codespace URL:', !!codespaceName);
 
